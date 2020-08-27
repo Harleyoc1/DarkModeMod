@@ -1,5 +1,6 @@
 package com.harleyoconnor.darkmode;
 
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.network.FMLNetworkConstants;
 import org.apache.commons.lang3.tuple.Pair;
 import net.minecraftforge.fml.ExtensionPoint;
@@ -43,6 +44,8 @@ public class DarkMode {
         }
 
         if (OPERATING_SYSTEM != OS.UNSUPPORTED) LOGGER.info("Detected Current State of Dark Mode for OS: " + isDarkMode() + ".");
+
+        MinecraftForge.EVENT_BUS.register(new DarkModeEvents());
     }
 
     public static Logger getLogger() {
